@@ -94,21 +94,21 @@ export class Editbusiness extends Component {
 								<div className="form-group">
 									<label className="control-label col-sm-2" htmlFor="businessname">Name:</label>
 									<div className="col-sm-10">
-										<input className="form-control" defaultValue={this.state.currentBusiness.name} name="name" placeholder="Business Name" id="businessname" maxLength="100" size="100"/>
+										<input className="form-control" value={this.state.currentBusiness.name} onChange={this.handleEdit} name="name" placeholder="Business Name" id="businessname" maxLength="100" size="100"/>
 									</div>
 								</div>
 								
 								<div className="form-group">
 									<label className="control-label col-sm-2" htmlFor="businesslocation">Location:</label>
 									<div className="col-sm-10">
-										<input className="form-control" defaultValue={this.state.currentBusiness.location} name="location" placeholder="Business Location" id="businesslocation" maxLength="100" size="100"/>
+										<input className="form-control" value={this.state.currentBusiness.location} onChange={this.handleEdit} name="location" placeholder="Business Location" id="businesslocation" maxLength="100" size="100"/>
 									</div>
 								</div>
 								
 								<div className="form-group">
 									<label className="control-label col-sm-2" htmlFor="businesscategory">Category:</label>
 									<div className="col-sm-10">
-										<input className="form-control" defaultValue={this.state.currentBusiness.category} name="category" placeholder="Business Category" id="businesscategory" maxLength="100" size="100"/>
+										<input className="form-control" value={this.state.currentBusiness.category} onChange={this.handleEdit} name="category" placeholder="Business Category" id="businesscategory" maxLength="100" size="100"/>
 									</div>
 								</div>
 								
