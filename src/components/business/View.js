@@ -3,7 +3,7 @@ import {withRouter} from "react-router-dom";
 import {connect} from 'react-redux';
 import {PropTypes} from "prop-types";
 
-import Navbar from "../NavigationBar";
+import {Navbar} from "../NavigationBar";
 import {
     deleteBusiness,
     getAllBusiness,
@@ -24,13 +24,6 @@ export class Viewbusiness extends Component {
         //Dispatch action to get all the businesses
         this.props.getAllBusiness();
     }
-
-    deleteBusiness(id) {
-		if (window.confirm('Are you sure you want to delete this business?')) {
-            this.props.deleteBusiness(id);
-            this.props.history.push("/businesslist");
-		}
-	}
 
 	render() {
 		return (		

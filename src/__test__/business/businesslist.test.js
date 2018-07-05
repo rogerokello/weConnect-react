@@ -8,12 +8,12 @@ import renderer from 'react-test-renderer';
 import {Provider} from "react-redux";
 import Loader from 'react-loader-spinner';
 
-import Navbar from '../components/navigationbar'
-import Pagination from '../components/pagination';
-import mainReducer from "../reducers";
+import Navbar from '../../components/NavigationBar'
+import Pagination from '../../components/Pagination';
+import mainReducer from "../../reducers";
 
 
-import {Businesslist} from '../components/business/List';
+import {Businesslist} from '../../components/business/List';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)
@@ -46,7 +46,8 @@ const store = mockStore(initialState)
 
 
 describe ('Business list', () => {
-    let wrapper
+    let wrapper;
+    let shallowwrapper;
 
     beforeEach( () => {
         const getBusinessesfn = jest.fn();
@@ -61,6 +62,7 @@ describe ('Business list', () => {
                 </MemoryRouter>
             </Provider>
         );
+
         
     });
     it('checks business list page loads', () => {
@@ -89,12 +91,13 @@ describe ('Business list', () => {
         expect(wrapper.find('Loader').length).to.equal(1);
         expect(wrapper.find('Navbar').length).to.equal(1);//q.toEqual(1);
 
-        //expect(wrapper.find('TableList').length).to.equal(1);
+        expect(wrapper.find('#tableList').length).to.equal(1);
         //to.contain.text("Company A");
      });
 
-    //  it('deletes',()=>{
-    //     wrapper.find('.btn-danger').at(1).simulate('click');
-    //  })
+
+    it('deletes',()=>{
+        //wrapper.find('.btn-danger').at(1).simulate('click');
+    })
     
 });

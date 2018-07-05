@@ -51,10 +51,8 @@ export const signIn = (signInInfo) => dispatch => {
 
 			})
 			.then (data => {
-				console.log('----', data);	
 				dispatch(stopDataFetch())
 				dispatch(loginUser(data))
-				console.log("After login user dispatch", data)
 			});
     
 	}

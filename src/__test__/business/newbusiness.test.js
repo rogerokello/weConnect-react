@@ -6,8 +6,8 @@ import configureStore from 'redux-mock-store';
 import {Provider} from "react-redux";
 
 
-import mainReducer from "../reducers";
-import {Newbusiness} from '../components/business/New';
+import mainReducer from "../../reducers";
+import {Newbusiness} from '../../components/business/New';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)
@@ -21,22 +21,34 @@ const localStorageMock = {
 global.localStorage = localStorageMock;
 
 describe ('New business Page', () => {
+    const initialState = {
+
+    }
+    let wrapper;
+    let store = mockStore(initialState)
+    let mockNewbusinessfn = jest.fn();
+    beforeEach( () => {
+        
+        wrapper = mount(
+            <Provider store={store}>
+                <MemoryRouter>
+                    <Newbusiness addBusiness={mockNewbusinessfn} />
+                </MemoryRouter>
+            </Provider>
+        );
+    });
+    
     it('checks register button can work', () => {
-        const initialState = {
-
-        }
-        const store = mockStore(initialState)
-        const mockNewbusinessfn = jest.fn();
-
-        const wrapper = mount(<Provider store={store}><MemoryRouter><Newbusiness addBusiness={mockNewbusinessfn} /></MemoryRouter></Provider>);
 
         wrapper.find('#newbusinessForm').at(0).simulate(
             'submit', 
             {preventDefault() {}}
         )
-
-        //expect(wrapper.find(Newbusiness).length).to.equal(1)
-        
         expect(mockNewbusinessfn.mock.calls.length).toBe(1)
     });
+    it('should match snapshot',() =>{
+        const wrapper = shallow(<Newbusiness addBusiness={mockNewbusinessfn} />)
+        expect(wrapper).toMatchSnapshot();
+    })
+
 });

@@ -1,4 +1,11 @@
-import { SIGNUP_USER, LOGIN_USER, LOGOUT_USER, CLEAR_LOGIN_MESSAGES, CLEAR_LOGOUT_MESSAGES, RESET_PASSWORD } from "../actions/actionTypes";
+import { 
+	SIGNUP_USER,
+	LOGIN_USER,
+	LOGOUT_USER, 
+	CLEAR_LOGIN_MESSAGES, 
+	CLEAR_LOGOUT_MESSAGES, 
+	RESET_PASSWORD 
+} from "../actions/actionTypes";
 
 const initialState = {
 	signUpMessage:{},

@@ -5,11 +5,12 @@ import {shallow ,mount} from 'enzyme';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
 import {Provider} from "react-redux";
-import mainReducer from "../reducers";
+import mainReducer from "../../reducers";
 import Router from 'react-mock-router';
 
 
-import {Reviewlist} from '../components/review/List';
+import {Reviewlist} from '../../components/review/List';
+import {Footer} from '../../components/review/layout/Footer';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)
@@ -23,6 +24,8 @@ const localStorageMock = {
 global.localStorage = localStorageMock;
 
 const initialState = {
+
+
     
 }
 
@@ -35,9 +38,9 @@ describe ('Review list', () => {
         const getReviewsfn = jest.fn();
         const onSubmitfn = jest.fn();
 
-        //const wrapper = mount(<Provider store={store}><MemoryRouter><Reviewlist reviews={{message:{}}} getAllReviews={getReviewsfn}/></MemoryRouter></Provider>);
-        
-        //expect(wrapper.find(Reviewlist).length).to.equal(1)
+        const wrapper = mount(<Provider store={store}><MemoryRouter><Reviewlist history={{push: ()=>{}}} reviews={{message:{}}} getAllReviews={getReviewsfn}/></MemoryRouter></Provider>);
+        //console.log(wrapper)
+        expect(wrapper.find(Footer).length).to.equal(1)
         // expect(wrapper.find(".col-sm-3").exists()).to.equal(true);
 
     });
@@ -47,7 +50,7 @@ describe ('Review list', () => {
         const onSubmitfn = jest.fn();
         const reviewId = "1";
 
-        //const wrapper = mount(<Provider store={store}><Router><Reviewlist reviewId={reviewId} reviews={{message:{}}} getAllReviews={getReviewsfn}/></Router></Provider>);
+        //const wrapper = mount(<Provider store={store}><Router><Reviewlist  reviewId={reviewId} reviews={{message:{}}} getAllReviews={getReviewsfn}/></Router></Provider>);
 
         //expects(wrapper).toMatchSnapshot();
     });

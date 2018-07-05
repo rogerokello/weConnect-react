@@ -4,8 +4,8 @@ import { PropTypes} from "prop-types";
 import {connect} from "react-redux";
  
 
-import {logOut} from "../../actions/userActions";//"../actions/userActions";
-import store from "../../store";//"../store";
+import {logOut} from "../../actions/userActions";
+import store from "../../store";
 
 class Logout extends Component {
 

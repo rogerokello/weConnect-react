@@ -4,7 +4,7 @@ import {MemoryRouter} from 'react-router-dom';
 import {shallow ,mount} from 'enzyme';
 
 
-import {Signup} from '../components/user/Signup';
+import {Signup} from '../../components/user/Signup';
 
 describe ('Sign up Page', () => {
     it('checks sign in button can work', () => {

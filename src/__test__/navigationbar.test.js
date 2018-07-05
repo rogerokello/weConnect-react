@@ -7,7 +7,7 @@ import {Provider} from "react-redux";
 
 
 import mainReducer from "../reducers";
-import {Navbar} from '../components/navigationbar';
+import {Navbar} from '../components/NavigationBar';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)
@@ -38,8 +38,6 @@ describe ('Navigation Bar', () => {
         
 
         search.instance().value = 'roger';
-
-        console.log(search.instance().value);
         
         
         wrapper.find('#searchform').simulate(

@@ -53,7 +53,6 @@ export const getAllReviews = (businessId) => dispatch => {
 					console.log(error);
 			})
 			.then(data => {
-					console.log(data);
 					dispatch(stopDataFetch());
 					dispatch(findAllReviews(data));
 			});

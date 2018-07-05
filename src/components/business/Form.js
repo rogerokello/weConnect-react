@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 export const Form = ({id, submitForm, handleEdit="", currentBusiness, formType="Add"}) => {
-    console.log("Current Business",submitForm);
     return (
         <form className="form-horizontal" id={id} onSubmit = {submitForm}>
                                     

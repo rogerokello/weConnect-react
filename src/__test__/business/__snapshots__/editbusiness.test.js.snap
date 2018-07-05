@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Edit business Page matches snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Editbusiness
+    currentBusiness={
+        Object {
+            "category": "it",
+            "id": "1",
+            "location": "lira",
+            "name": "xedrox",
+          }
+    }
+    editBusiness={[Function]}
+    editMessage={
+        Object {
+            "message": "",
+            "status": "",
+          }
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <withRouter(Connect(Navbar)) />,
+        <Unknown
+          fetchDataLoader={
+                    <Unknown
+                              pendingTask={undefined}
+                              style={
+                                        Object {
+                                                  "position": "absolute",
+                                                  "right": "40%",
+                                                  "top": "10%",
+                                                  "width": "100%",
+                                                }
+                              }
+                    />
+          }
+          form={
+                    <Unknown
+                              currentBusiness={
+                                        Object {
+                                                  "category": "it",
+                                                  "id": "1",
+                                                  "location": "lira",
+                                                  "name": "xedrox",
+                                                }
+                              }
+                              formType="Edit"
+                              handleEdit={[Function]}
+                              id="editBusinessForm"
+                              submitForm={[Function]}
+                    />
+          }
+          header="Edit business"
+/>,
+        <Unknown />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "fetchDataLoader": <Unknown
+            pendingTask={undefined}
+            style={
+                        Object {
+                                    "position": "absolute",
+                                    "right": "40%",
+                                    "top": "10%",
+                                    "width": "100%",
+                                  }
+            }
+/>,
+          "form": <Unknown
+            currentBusiness={
+                        Object {
+                                    "category": "it",
+                                    "id": "1",
+                                    "location": "lira",
+                                    "name": "xedrox",
+                                  }
+            }
+            formType="Edit"
+            handleEdit={[Function]}
+            id="editBusinessForm"
+            submitForm={[Function]}
+/>,
+          "header": "Edit business",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <withRouter(Connect(Navbar)) />,
+          <Unknown
+            fetchDataLoader={
+                        <Unknown
+                                    pendingTask={undefined}
+                                    style={
+                                                Object {
+                                                            "position": "absolute",
+                                                            "right": "40%",
+                                                            "top": "10%",
+                                                            "width": "100%",
+                                                          }
+                                    }
+                        />
+            }
+            form={
+                        <Unknown
+                                    currentBusiness={
+                                                Object {
+                                                            "category": "it",
+                                                            "id": "1",
+                                                            "location": "lira",
+                                                            "name": "xedrox",
+                                                          }
+                                    }
+                                    formType="Edit"
+                                    handleEdit={[Function]}
+                                    id="editBusinessForm"
+                                    submitForm={[Function]}
+                        />
+            }
+            header="Edit business"
+/>,
+          <Unknown />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "fetchDataLoader": <Unknown
+              pendingTask={undefined}
+              style={
+                            Object {
+                                          "position": "absolute",
+                                          "right": "40%",
+                                          "top": "10%",
+                                          "width": "100%",
+                                        }
+              }
+/>,
+            "form": <Unknown
+              currentBusiness={
+                            Object {
+                                          "category": "it",
+                                          "id": "1",
+                                          "location": "lira",
+                                          "name": "xedrox",
+                                        }
+              }
+              formType="Edit"
+              handleEdit={[Function]}
+              id="editBusinessForm"
+              submitForm={[Function]}
+/>,
+            "header": "Edit business",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

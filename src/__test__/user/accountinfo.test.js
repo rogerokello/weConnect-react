@@ -6,8 +6,8 @@ import configureStore from 'redux-mock-store';
 import {Provider} from "react-redux";
 
 
-import mainReducer from "../reducers";
-import {AccountInfo} from '../components/user/AccountInfo';
+import mainReducer from "../../reducers";
+import {AccountInfo} from '../../components/user/AccountInfo';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)
@@ -21,14 +21,19 @@ const localStorageMock = {
 global.localStorage = localStorageMock;
 
 describe ('Account info Page', () => {
-    it('checks form can', () => {
+    it('checks form can sumit data', () => {
         const initialState = {
 
         }
         const store = mockStore(initialState)
         const resetYourPassword = jest.fn();
 
-        const wrapper = mount(<Provider store={store}><MemoryRouter><AccountInfo resetYourPassword={resetYourPassword} /></MemoryRouter></Provider>);
+        let user = {
+            message:"Success",
+            status:"succeess"
+        }
+
+        const wrapper = mount(<Provider store={store}><MemoryRouter><AccountInfo user={user} resetYourPassword={resetYourPassword} /></MemoryRouter></Provider>);
 
         let password = wrapper.find('input[name="password"]'); 
         let password1 = wrapper.find('input[name="password1"]');

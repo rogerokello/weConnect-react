@@ -5,11 +5,11 @@ import {shallow ,mount} from 'enzyme';
 import configureStore from 'redux-mock-store';
 import {Provider} from "react-redux";
 
-import {FetchData} from "../components/loaders/FetchData";
+import {FetchData} from "../../components/loaders/FetchData";
 
 
-import mainReducer from "../reducers";
-import {Editbusiness} from '../components/business/Edit';
+import mainReducer from "../../reducers";
+import {Editbusiness} from '../../components/business/Edit';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)
@@ -79,6 +79,12 @@ describe ('Edit business Page', () => {
         expect(businessName.instance().value).toEqual('fdsjsjs');
         expect(category.instance().value).toEqual('fdsafajsjs');
         expect(location.instance().value).toEqual('jkl');        
+    })
+    it('matches snapshot',()=>{
+        let wrapper = shallow(<Editbusiness currentBusiness={currentBusinessInfo}
+            editBusiness={mockEditbusinessfn} 
+            editMessage={editMessage} />) 
+        expect(wrapper).toMatchSnapshot()
     })
     
     

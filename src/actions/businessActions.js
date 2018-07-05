@@ -57,7 +57,6 @@ export const deleteBusiness = (businessId) => dispatch => {
 				return result.json();
 			})
 			.then (data => {
-				console.log(data)
 				dispatch(stopDataFetch());
 				dispatch(removeBusiness(data, businessId))
 			});
@@ -83,15 +82,16 @@ export const editBusiness = (businessInfo, businessId) => dispatch => {
 			})
 			.then (data => {
 				dispatch(stopDataFetch());
-				console.log(data)
 				dispatch(updateBusiness(data))
 			});
 	}
 };
 
 export const getAllBusiness = (nextorprev="") => dispatch => {
-	let options
+	let options;
+	let url;
 	if(nextorprev !== ""){
+		url = BASE_URL+"businesses?pageNo="+nextorprev
 		options = {
 			method:"GET",
 			url:BASE_URL+"businesses?pageNo="+nextorprev,
@@ -101,6 +101,7 @@ export const getAllBusiness = (nextorprev="") => dispatch => {
 			}
 		};
 	}else{
+		url = BASE_URL+"businesses";
 		options = {
 			method:"GET",
 			url:BASE_URL+"businesses",
@@ -111,7 +112,7 @@ export const getAllBusiness = (nextorprev="") => dispatch => {
 		};
 	}
 	dispatch(startDataFetch());
-	axios(options)
+	fetch(url,options)
 		.then (response => {	
 			return response.data;
 		})
@@ -163,7 +164,6 @@ export const getOneBusiness = (id) => dispatch => {
 };
 
 export const searchForBusiness = (searchString) => dispatch => {
-	console.log("data", searchString);
 	if(searchString === undefined){
 		searchString = "";
 	}

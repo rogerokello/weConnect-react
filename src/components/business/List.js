@@ -14,6 +14,7 @@ import {clearDeleteMessageStatus} from "../../actions/actionCreators";
 import {Footer} from "../../components/layout/common/Footer";
 
 import {FetchData} from "../loaders/FetchData";
+import {generateBusinessesByPage} from "../../helpers/generateBusinessesByPage"
 
 import {ListRows} from "./layout/ListRows";
 import {TableList} from "./layout/TableList";
@@ -23,6 +24,8 @@ import {
 	editbuttonStyle,
 	loaderPosition
 } from "./layout/styles/styles";
+
+
 
 
 export class Businesslist extends Component {
@@ -37,7 +40,6 @@ export class Businesslist extends Component {
 
 		if(recieved && recieved.business.status === "failure"){
 			NotificationManager.info(recieved.business.message, "", 5000);
-			//store.dispatch(clearNewBusinessMessageStatus())
 		}
 
 		if(store.getState().connection.tokenExpired===true){
@@ -58,9 +60,6 @@ export class Businesslist extends Component {
 
   	}
 
-	navigateToPage(pageInfo){
-		this.props.getAllBusiness(pageInfo);
-	}
 
   	deleteBusinessRemote(id){
 
@@ -88,7 +87,7 @@ export class Businesslist extends Component {
 		}
 		
 		return (
-			<div>
+			<div id="tableList">
 				<Navbar {...this.props}/>
 					
 				<TableList
@@ -117,28 +116,13 @@ Businesslist.propTypes = {
 	business: PropTypes.array,
 }
 
-// Generate list of businesses for given page number
-function generateBusinessesByPage(businesses, pageNo) {
-    // I assumed showing 6 businesses per page
-	const perPage = 6;
-	console.log("generate", businesses);
-    if (businesses && businesses.length) {
 
-        // Filter 6 businesses by page number
-        return businesses.filter((business, i) => {
-            return i >= perPage*(pageNo-1) && i < perPage*pageNo;
-        });
-    }
-    return [];
-}
+
 
 const mapStateToProps = (state, ownProps) => {
 	// Set page number to 1 if no number in url params
-	console.log("Neew", state.business.businesses.message)
 	let pageNo = ownProps.match.params.pageNo || 1;
-	console.log("page", pageNo)
 	let businesses = generateBusinessesByPage(state.business.businesses.message, pageNo);
-	console.log("Businesses", businesses);
 	let pages;
 
 	let has_next="";
