@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import {withRouter} from "react-router-dom";
 import {NotificationManager} from 'react-notifications';
-
-
 import {connect} from 'react-redux';
-
 import {PropTypes} from "prop-types";
+import Loader from 'react-loader-spinner';
 
-import Navbar from "./navigationbar";
+import store from "../../store";
+import {loaderPosition} from "../styles/loaderPosition";
+import Navbar from "../NavigationBar";
+import {clearEditMessageStatus} from "../../actions/actionCreators";
+import {editBusiness} from "../../actions/businessActions";
 
-import {editBusiness} from "../actions/businessActions";
+import {Footer} from "../../components/layout/common/Footer";
+
+import {FetchData} from "../loaders/FetchData";
+
+import {Business} from "./layout/Business";
+
+import {Form} from "./Form";
 
 
 export class Editbusiness extends Component {
@@ -23,13 +31,18 @@ export class Editbusiness extends Component {
 
 	componentWillReceiveProps(recieved){
 		if(recieved && recieved.editMessage.status==="success"){
-            this.props.history.push("/businesslist");
+			this.props.history.push("/businesslist");
+			NotificationManager.info(recieved.editMessage.message, "", 5000);
+			store.dispatch(clearEditMessageStatus());
 		}
 
 		if(recieved && recieved.editMessage.status === "failure"){
 			NotificationManager.info(recieved.editMessage.message, "", 5000);
+			store.dispatch(clearEditMessageStatus());
 		}
+
 	};
+
 
     componentWillMount(){
         if(localStorage.getItem("access_token") === null){
@@ -72,58 +85,35 @@ export class Editbusiness extends Component {
 				}
 			}
 
-			this.props.editBusiness(JSON.stringify(businesslist), this.state.currentBusiness.id);
+			this.props.editBusiness(
+				JSON.stringify(businesslist),
+				this.state.currentBusiness.id
+			);
 		}
 	}
 
 	render() {
+
 		return (
 			
 			<div>
 				
 				<Navbar/>
-				<div className="container-fluid text-center">    
-					<div className="row content">
-						<div className="col-sm-3">
-						</div>
-						<div className="col-sm-6">
-							<h2 className="text-center">Edit business</h2>
 
-							<form className="form-horizontal" id="editBusinessForm" onSubmit = {this.submitForm}>
-								
-								<div className="form-group">
-									<label className="control-label col-sm-2" htmlFor="businessname">Name:</label>
-									<div className="col-sm-10">
-										<input className="form-control" value={this.state.currentBusiness.name} onChange={this.handleEdit} name="name" placeholder="Business Name" id="businessname" maxLength="100" size="100"/>
-									</div>
-								</div>
-								
-								<div className="form-group">
-									<label className="control-label col-sm-2" htmlFor="businesslocation">Location:</label>
-									<div className="col-sm-10">
-										<input className="form-control" value={this.state.currentBusiness.location} onChange={this.handleEdit} name="location" placeholder="Business Location" id="businesslocation" maxLength="100" size="100"/>
-									</div>
-								</div>
-								
-								<div className="form-group">
-									<label className="control-label col-sm-2" htmlFor="businesscategory">Category:</label>
-									<div className="col-sm-10">
-										<input className="form-control" value={this.state.currentBusiness.category} onChange={this.handleEdit} name="category" placeholder="Business Category" id="businesscategory" maxLength="100" size="100"/>
-									</div>
-								</div>
-								
-								<button type="submit" className="btn btn-warning text-center"><span className="glyphicon glyphicon-edit"></span> Edit</button>
-							</form>
-							
-						</div>
-						<div className="col-sm-3">
-						</div>
-					</div>
 
-					<footer className="container-fluid text-center" data-offset-bottom="10">
-						<p>&copy; Roger Okello</p>
-					</footer>
-				</div>
+				<Business
+					header={"Edit business"}
+					fetchDataLoader={<FetchData style={loaderPosition} pendingTask={this.props.pendingTask} />}
+					form={
+						<Form	id="editBusinessForm" 
+								submitForm={this.submitForm.bind(this)}
+								handleEdit={this.handleEdit.bind(this)}
+								currentBusiness={this.props.currentBusiness}
+								formType={"Edit"} 
+						/>
+					}
+				/>	
+				<Footer/>
 			</div>
 		);
 	}
@@ -156,7 +146,8 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		currentBusiness,
 		business: state.business.businesses,
-		editMessage: state.business.editbusinessMessage	
+		editMessage: state.business.editbusinessMessage,
+		pendingTask: state.pendingTasksReducer,
     }
 };
 

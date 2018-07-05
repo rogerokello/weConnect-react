@@ -1,4 +1,4 @@
-export default stringify = (x) => {
+export const stringify = (object) => {
     let simpleObj={};
 
 		for (let prop in object){

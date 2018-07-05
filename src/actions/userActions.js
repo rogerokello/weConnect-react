@@ -3,8 +3,13 @@ import {BASE_URL} from "./baseurl";
 import {
 	signUpUser,
 	loginUser,
-	logOutUser
+	logOutUser,
+	startDataFetch,
+	stopDataFetch,
+	resetPassword
 } from './actionCreators'
+
+
 
 
 export const signUp = (signUpInfo) =>dispatch => {
@@ -39,17 +44,46 @@ export const signIn = (signInInfo) => dispatch => {
 				"content-type":"application/json"
 			}
 		};
-
+		dispatch(startDataFetch());
 		fetch(BASE_URL+"auth/login",options)
 			.then (result => {
 				return result.json();
+
 			})
 			.then (data => {
-					dispatch(loginUser(data))
+				console.log('----', data);	
+				dispatch(stopDataFetch())
+				dispatch(loginUser(data))
+				console.log("After login user dispatch", data)
 			});
     
 	}
 };
+
+export const resetYourPassword = (resetInfo) => dispatch => {
+	if (resetInfo){
+		const options = {
+			method:"POST",
+			body: resetInfo, 
+			headers:{
+				"content-type":"application/json",
+				"Authorization": "Bearer " + localStorage.getItem("access_token")
+			}
+		};
+		dispatch(startDataFetch());
+		fetch(BASE_URL+"auth/reset-password",options)
+			.then (result => {
+				return result.json();
+
+			})
+			.then (data => {		
+				dispatch(stopDataFetch())
+				dispatch(resetPassword(data))
+			});
+    
+	}
+};
+
 
 export const logOut = () => dispatch => {
 

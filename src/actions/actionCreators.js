@@ -1,4 +1,9 @@
 import * as types from "./actionTypes";
+import {
+    begin, // The action value if a "long" running task begun
+    end, // The action value if a "long" running task ended
+    pendingTask
+} from 'react-redux-spinner';
 
 export const createBusiness = (data) => {
     return {
@@ -91,4 +96,95 @@ export const loginUser = (data) => {
         payload:data
     };
 };
+
+export const resetPassword = (data) => {
+    return {
+        type: types.RESET_PASSWORD,
+        payload:data
+    };
+};
+
+export const startDataFetch = () => {
+    return {
+        type: types.START_FETCHING_DATA,
+        [ pendingTask ]: begin
+    }
+}
+
+export const stopDataFetch = () => {
+    return {
+        type: types.STOP_FETCHING_DATA,
+        [ pendingTask ]: end
+    }
+}
+
+export const clearDeleteMessageStatus = () => {
+    return {
+        type: types.CLEAR_DELETE_MESSAGE,
+        payload: {
+            "message":"",
+            "status":""
+        }
+    }
+}
+
+export const clearEditMessageStatus = () => {
+    return {
+        type: types.CLEAR_EDIT_MESSAGE,
+        payload: {
+            "message":"",
+            "status":""
+        }
+    }
+}
+
+export const clearNewBusinessMessageStatus = () => {
+    return {
+        type: types.CLEAR_NEW_BUSINESS_MESSAGE,
+        payload: {
+            "message":"",
+            "status":""
+        }
+    }
+}
+
+export const clearReviewList = () => {
+    return {
+        type: types.CLEAR_REVIEW_LIST,
+        payload: {
+            "message":"",
+            "status":""
+        }
+    }
+}
+
+export const clearLoginMessages = () => {
+    return {
+        type: types.CLEAR_LOGIN_MESSAGES,
+        payload: {
+            "message":"",
+            "status":""
+        }
+    }
+}
+
+export const clearSignUpMessages = () => {
+    return {
+        type: types.CLEAR_SIGNUP_MESSAGES,
+        payload: {
+            "message":"",
+            "status":""
+        }
+    }
+}
+
+export const clearReviewMessages = () => {
+    return {
+        type: types.CLEAR_NEW_REVIEW_MESSAGE,
+        payload: {
+            "message":"",
+            "status":""
+        }
+    }
+}
 

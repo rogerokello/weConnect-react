@@ -1,4 +1,15 @@
-import { GET_ONE_BUSINESS,LOADING_BUSINESSES,SEARCH_FOR_BUSINESS ,ADD_BUSINESS, GET_ALL_BUSINESS, EDIT_BUSINESS, DELETE_BUSINESS } from "../actions/actionTypes";
+import { 
+	GET_ONE_BUSINESS,
+	LOADING_BUSINESSES,
+	SEARCH_FOR_BUSINESS,
+	ADD_BUSINESS,
+	GET_ALL_BUSINESS, 
+	EDIT_BUSINESS, 
+	DELETE_BUSINESS,
+	CLEAR_DELETE_MESSAGE,
+	CLEAR_EDIT_MESSAGE,
+	CLEAR_NEW_BUSINESS_MESSAGE
+} from "../actions/actionTypes";
 
 const initialState = {
 	newbusinessMessage:{},
@@ -29,7 +40,7 @@ export default (state = initialState, action)=>{
 				editbusinessMessage: action.payload
 			};
 		case DELETE_BUSINESS:
-			// Return new list without deleted businesses
+			//Return new list without deleted businesses
 			let one = state.businesses.message.filter(business => 
 				business.id !== action.id
 			);
@@ -39,8 +50,9 @@ export default (state = initialState, action)=>{
 				status: "success" 
 			}
 
-			return {...state, 
-				businesses
+			return {...state,
+				businesses: businesses,
+				deletebusinessMessage: action.payload
 			};
 		case SEARCH_FOR_BUSINESS:
 			return {...state, 
@@ -49,7 +61,22 @@ export default (state = initialState, action)=>{
 		case LOADING_BUSINESSES:
 			return {...state, 
 				loadingbusiness: action.payload
-			};		
+			};
+		case CLEAR_DELETE_MESSAGE:
+			return {
+				...state,
+				deletebusinessMessage: action.payload
+			};
+		case CLEAR_EDIT_MESSAGE:
+			return {
+				...state,
+				editbusinessMessage: action.payload
+			}
+		case CLEAR_NEW_BUSINESS_MESSAGE:
+			return {
+				...state,
+				newbusinessMessage: action.payload
+			}		
 		default:
 			return state;
 	}

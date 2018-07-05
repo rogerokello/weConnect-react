@@ -1,4 +1,4 @@
-import { ADD_REVIEW, GET_ALL_REVIEWS } from "../actions/actionTypes";
+import { ADD_REVIEW, GET_ALL_REVIEWS, CLEAR_REVIEW_LIST, CLEAR_NEW_REVIEW_MESSAGE } from "../actions/actionTypes";
 
 const initialState = {
 	reviewMessage:{},
@@ -14,7 +14,17 @@ export default (state = initialState, action)=>{
         case GET_ALL_REVIEWS:
 			return {...state, 
 				reviews: action.payload
-            };
+			};
+		case CLEAR_REVIEW_LIST:
+			return{
+				...state,
+				reviews: action.payload
+			}
+		case CLEAR_NEW_REVIEW_MESSAGE:
+			return{
+				...state,
+				reviewMessage: action.payload
+			}
 		default:
 			return state;
 	}

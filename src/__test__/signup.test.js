@@ -4,7 +4,7 @@ import {MemoryRouter} from 'react-router-dom';
 import {shallow ,mount} from 'enzyme';
 
 
-import {Signup} from '../components/signup';
+import {Signup} from '../components/user/Signup';
 
 describe ('Sign up Page', () => {
     it('checks sign in button can work', () => {
@@ -16,8 +16,7 @@ describe ('Sign up Page', () => {
             'submit', 
             {preventDefault() {}}
         )
-
-        
+    
         expect(mockSignupfn.mock.calls.length).toBe(1)
     });
 });

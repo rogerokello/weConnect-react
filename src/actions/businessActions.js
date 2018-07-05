@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 import {BASE_URL} from "./baseurl";
+import axios from 'axios';
 
 import {
 	createBusiness,
@@ -9,7 +10,9 @@ import {
 	loadBusinesses,
 	extractAllBusinesses,
 	searchForBusinesses,
-	extractOneBusiness
+	extractOneBusiness,
+	startDataFetch,
+	stopDataFetch
 } from './actionCreators'
 
 export const addBusiness = (businessInfo) => dispatch => {
@@ -24,12 +27,13 @@ export const addBusiness = (businessInfo) => dispatch => {
 				"Authorization": "Bearer " + localStorage.getItem("access_token")
 			}
 		};
-
+		dispatch(startDataFetch());
 		fetch(BASE_URL+"businesses",options)
 			.then (result => {
 				return result.json();
 			})
 			.then (data => {
+				dispatch(stopDataFetch());
 				dispatch(createBusiness(data))
 			});
 	}
@@ -46,14 +50,16 @@ export const deleteBusiness = (businessId) => dispatch => {
 				"Authorization": "Bearer " + localStorage.getItem("access_token")
 			}
 		};
-
+		dispatch(startDataFetch());
 		fetch(BASE_URL+"businesses/"+businessId, options)
 			.then (result => {
                 
 				return result.json();
 			})
 			.then (data => {
-				dispatch(removeBusiness(data))
+				console.log(data)
+				dispatch(stopDataFetch());
+				dispatch(removeBusiness(data, businessId))
 			});
 	}
 };
@@ -70,47 +76,53 @@ export const editBusiness = (businessInfo, businessId) => dispatch => {
 				"Authorization": "Bearer " + localStorage.getItem("access_token")
 			}
 		};
-
+		dispatch(startDataFetch());
 		fetch(BASE_URL+"businesses/"+businessId, options)
 			.then (result => {
 				return result.json();
 			})
 			.then (data => {
+				dispatch(stopDataFetch());
+				console.log(data)
 				dispatch(updateBusiness(data))
 			});
 	}
 };
 
-export const getAllBusiness = () => dispatch => {
-        
-	const options = {
-		method:"GET",
-		headers:{
-			"content-type":"application/json",
-			"Authorization": "Bearer " + localStorage.getItem("access_token")
-		}
-	};
-	dispatch({
-		type: types.LOADING_BUSINESSES,
-		payload: true
-	});
-	fetch(BASE_URL+"businesses",options)
-		.then (response => {
-
-			if(response.ok){
-				return response.json();
-			}else{
-				dispatch(changeTokenState())
+export const getAllBusiness = (nextorprev="") => dispatch => {
+	let options
+	if(nextorprev !== ""){
+		options = {
+			method:"GET",
+			url:BASE_URL+"businesses?pageNo="+nextorprev,
+			headers:{
+				"content-type":"application/json",
+				"Authorization": "Bearer " + localStorage.getItem("access_token")
 			}
-
-		},error => {
-			console.log(error);
+		};
+	}else{
+		options = {
+			method:"GET",
+			url:BASE_URL+"businesses",
+			headers:{
+				"content-type":"application/json",
+				"Authorization": "Bearer " + localStorage.getItem("access_token")
+			}
+		};
+	}
+	dispatch(startDataFetch());
+	axios(options)
+		.then (response => {	
+			return response.data;
 		})
 		.then(data => {
-			dispatch(loadBusinesses())
+			//console.log(data)
+			dispatch(stopDataFetch());
 			dispatch(extractAllBusinesses(data))
-		}).catch(
-
+		}).catch(error => {
+			console.log(error)
+			dispatch(stopDataFetch());
+		}
 		);
 };
 
@@ -127,6 +139,7 @@ export const getOneBusiness = (id) => dispatch => {
 		type: types.LOADING_BUSINESSES,
 		payload: true
 	});
+	dispatch(startDataFetch());
 	fetch(BASE_URL+"businesses/"+id,options)
 		.then (response => {
 
@@ -142,6 +155,7 @@ export const getOneBusiness = (id) => dispatch => {
 		})
 		.then(data => {
 			dispatch(loadBusinesses())
+			dispatch(stopDataFetch());
 			dispatch(extractOneBusiness(data))
 		}).catch(
 
@@ -162,6 +176,7 @@ export const searchForBusiness = (searchString) => dispatch => {
 		}
 	};
 
+	dispatch(startDataFetch());
 	fetch(BASE_URL+"businesses?q="+ searchString,options)
 		.then (response => {
         
@@ -170,6 +185,7 @@ export const searchForBusiness = (searchString) => dispatch => {
 			console.log(error);
 		})
 		.then(data => {
+			dispatch(stopDataFetch());
             dispatch(searchForBusinesses(data))
 		});
 };

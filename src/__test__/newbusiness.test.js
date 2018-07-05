@@ -7,7 +7,7 @@ import {Provider} from "react-redux";
 
 
 import mainReducer from "../reducers";
-import {Newbusiness} from '../components/newbusiness';
+import {Newbusiness} from '../components/business/New';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)
@@ -30,10 +30,12 @@ describe ('New business Page', () => {
 
         const wrapper = mount(<Provider store={store}><MemoryRouter><Newbusiness addBusiness={mockNewbusinessfn} /></MemoryRouter></Provider>);
 
-        wrapper.find('#newbusinessForm').simulate(
+        wrapper.find('#newbusinessForm').at(0).simulate(
             'submit', 
             {preventDefault() {}}
         )
+
+        //expect(wrapper.find(Newbusiness).length).to.equal(1)
         
         expect(mockNewbusinessfn.mock.calls.length).toBe(1)
     });

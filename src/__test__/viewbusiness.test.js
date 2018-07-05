@@ -8,7 +8,7 @@ import {Provider} from "react-redux";
 import mainReducer from "../reducers";
 
 
-import {Reviewlist} from '../components/reviewlist';
+import {Viewbusiness} from '../components/business/View';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)
@@ -28,13 +28,19 @@ const initialState = {
 const store = mockStore(initialState)
 
 
-describe ('Review list', () => {
-    it('checks review page can load', () => {
+describe ('View Business', () => {
+    it('check business can be viewed', () => {
         
-        const getReviewsfn = jest.fn();
+        const getAllBusinessfn = jest.fn();
         const onSubmitfn = jest.fn();
 
-        const wrapper = mount(<Provider store={store}><MemoryRouter><Reviewlist reviews={{message:{}}} getAllReviews={getReviewsfn}/></MemoryRouter></Provider>);
+        const currentBusiness = {
+            name:"",
+            location:"",
+            category:""
+        }
+
+        const wrapper = mount(<Provider store={store}><MemoryRouter><Viewbusiness currentBusiness={currentBusiness} getAllBusiness={getAllBusinessfn}/></MemoryRouter></Provider>);
         
         expect(wrapper.find('.container-fluid').exists()).to.equal(true);
 

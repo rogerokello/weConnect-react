@@ -2,14 +2,15 @@ import { Component } from "react";
 import {withRouter} from "react-router-dom";
 import { PropTypes} from "prop-types";
 import {connect} from "react-redux";
+ 
 
-
-import {logOut} from "../actions/userActions";
+import {logOut} from "../../actions/userActions";//"../actions/userActions";
+import store from "../../store";//"../store";
 
 class Logout extends Component {
 
 	componentWillMount(){
-		localStorage.clear();
+		window.localStorage.clear();
 		this.props.history.push("/login");
 	}
 

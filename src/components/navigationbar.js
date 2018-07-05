@@ -1,29 +1,35 @@
 import React, { Component } from "react";
 import {withRouter, NavLink} from "react-router-dom";
 import {connect} from 'react-redux'
+import { PropTypes } from 'prop-types';
 import {NotificationManager} from 'react-notifications';
 
-import {searchForBusiness} from "../actions/businessActions"
+import {searchForBusiness, getAllBusiness} from "../actions/businessActions";//"../actions/businessActions";
 
 
 export class Navbar extends Component {
 
+	constructor(props){
+		super(props)
+		this.submitSearch = this.submitSearch.bind(this);
+	}
+
 	componentDidUpdate(){
-		if(this.props.storestate.connection.tokenexpired === true){
-			NotificationManager.info("Please log in again, session expired", "", 5000);
-			this.props.history.push("/login");
-		}
+		// if(this.props.storestate.connection.tokenexpired === true){
+		// 	NotificationManager.info("Please log in again, session expired", "", 5000);
+		// 	this.props.history.push("/login");
+		// }
 	}
 
 	submitSearch = (e) => {
 
 		e.preventDefault();
-	
-		let searchstring = e.target.search.value;
+		let searchstring = e.target.elements.search.value;
+		
 	
 		if(searchstring.length > 0){
-			this.props.searchForBusiness(e.target.search.value);
 			this.props.history.push("/businesslist");
+			this.props.searchForBusiness(e.target.elements.search.value);	
 		}else{
 			NotificationManager.info("Please supply a search string", "", 5000);
 		}
@@ -43,8 +49,9 @@ export class Navbar extends Component {
 						<ul className="nav navbar-nav">
 							<li>
 								<span className="btn btn-lg">
-									<NavLink to="/businesslist/1" >
-										<span className="glyphicon glyphicon-list"></span> Businesses 
+									<NavLink to="/businesslist" >
+										<span className="glyphicon glyphicon-list"></span> <span onClick={() => this.props.getAllBusiness()}>Businesses</span> 
+										
 									</NavLink>
 								</span>
 							</li>
@@ -61,9 +68,9 @@ export class Navbar extends Component {
 							</li>
 						</ul>
 
-						<form className="navbar-form navbar-left" onSubmit={this.submitSearch}>
+						<form id="searchform" className="navbar-form navbar-left" onSubmit={this.submitSearch}>
 							<div className="form-group">
-								<input type="text" className="form-control" placeholder="Search for business location or category" maxLength="30" size="40" name="search"/>
+								<input id="searchvalue"  name="search" type="text" className="form-control" placeholder="Search for business, location or category" maxLength="30" size="40"/>
 							</div>{' '}
 							<button type="submit" className="btn btn-default">Search</button>
 						</form>
@@ -76,9 +83,9 @@ export class Navbar extends Component {
 								</a>
 								<ul className="dropdown-menu">
 									<li>
-										<a>
-											<span className="glyphicon glyphicon-edit"></span> Edit Account
-										</a>
+										<NavLink to="/accountinfo" >
+											<span className="glyphicon glyphicon-info-sign"></span> Account Information
+										</NavLink>
 									</li>
 									<li>
 										<NavLink to="/logout" >
@@ -96,10 +103,16 @@ export class Navbar extends Component {
 	}
 }
 
+Navbar.propTypes = {
+	searchForBusiness: PropTypes.func,
+	getAllBusiness: PropTypes.func,
+    storestate: PropTypes.object
+}
+
 const mapStateToProps = state => {
     return {
         storestate: state
     }
 };
 
-export default withRouter(connect(mapStateToProps, {searchForBusiness})(Navbar));
+export default withRouter(connect(mapStateToProps, {searchForBusiness, getAllBusiness})(Navbar));
