@@ -1,11 +1,11 @@
-import reducer from '../../reducers/reviewReducer';
+import reducer from '../../Reducers/reviewReducer';
 
 import {
     ADD_REVIEW,
     GET_ALL_REVIEWS,
     CLEAR_REVIEW_LIST,
     CLEAR_NEW_REVIEW_MESSAGE
-} from '../../actions/actionTypes';
+} from '../../Actions/actionTypes';
 
 describe('ADD_BUSINESS Reducer', ()=>{
     let review;

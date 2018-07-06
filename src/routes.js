@@ -2,17 +2,17 @@ import React, { Component } from "react";
 import {BrowserRouter as Router , Route} from "react-router-dom";
 import {NotificationContainer} from 'react-notifications';
 
-import Signup from "./components/user/Signup";//"./components/signup";
-import Signin from "./components/user/Signin";//"./components/signin";
-import Logout from "./components/user/Logout";//"./components/logout";
-import BusinessList from "./components/business/List";//"./components/businesslist";
-import Newbusiness from "./components/business/New";//"./components/newbusiness";
-import Editbusiness from "./components/business/Edit";//"./components/editbusiness";
-import Viewbusiness from "./components/business/View";//"./components/viewbusiness";
-import AccountInfo from "./components/user/AccountInfo";//"./components/AccountInfo";
-import Newreview from "./components/review/New";//"./components/reviewbusiness";
-import Reviewlist from "./components/review/List";//"./components/reviewlist";
-import Navbar from "./components/NavigationBar";//"./components/navigationbar";
+import Signup from "./Components/User/Signup";
+import Signin from "./Components/User/Signin";
+import Logout from "./Components/User/Logout";
+import BusinessList from "./Components/Business/List";
+import Newbusiness from "./Components/Business/New";
+import Editbusiness from "./Components/Business/Edit";
+import Viewbusiness from "./Components/Business/View";
+import AccountInfo from "./Components/User/AccountInfo";
+import Newreview from "./Components/Review/New";
+import Reviewlist from "./Components/Review/List";
+import Navbar from "./Components/Layout/Common/NavigationBar";
 
 class Routes extends Component {
 	render() {

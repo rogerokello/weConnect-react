@@ -1,4 +1,4 @@
-import reducer from '../../reducers/userReducer';
+import reducer from '../../Reducers/userReducer';
 
 import {
     SIGNUP_USER,
@@ -7,7 +7,7 @@ import {
 	CLEAR_LOGIN_MESSAGES, 
 	CLEAR_LOGOUT_MESSAGES, 
 	RESET_PASSWORD 
-} from '../../actions/actionTypes';
+} from '../../Actions/actionTypes';
 
 describe('ADD_BUSINESS Reducer', ()=>{
     let user;

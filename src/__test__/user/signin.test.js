@@ -6,7 +6,7 @@ import {shallow ,mount} from 'enzyme';
 //import { expect } from 'chai';
 
 
-import {Signin} from '../../components/user/Signin';
+import {Signin} from '../../Components/User/Signin';
 
 let mockSigninfn = jest.fn();
 let onSubmitfn = jest.fn();

@@ -6,8 +6,8 @@ import configureStore from 'redux-mock-store';
 import {Provider} from "react-redux";
 
 
-import mainReducer from "../reducers";
-import {Navbar} from '../components/NavigationBar';
+import mainReducer from "../Reducers";
+import {Navbar} from '../Components/Layout/Common/NavigationBar';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)

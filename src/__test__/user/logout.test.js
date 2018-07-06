@@ -6,11 +6,11 @@ import {shallow ,mount} from 'enzyme';
 //import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
 import {Provider} from "react-redux";
-import mainReducer from "../../reducers";
+import mainReducer from "../../Reducers";
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)
 
-import Logout, { Signin } from '../../components/user/Logout';
+import Logout, { Signin } from '../../Components/User/Logout';
 
 let mockSigninfn = jest.fn();
 let onSubmitfn = jest.fn();

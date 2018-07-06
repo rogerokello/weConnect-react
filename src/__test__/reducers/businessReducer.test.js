@@ -1,4 +1,4 @@
-import reducer from '../../reducers/businessReducer';
+import reducer from '../../Reducers/businessReducer';
 import {
     GET_ONE_BUSINESS,
 	LOADING_BUSINESSES,
@@ -10,7 +10,7 @@ import {
 	CLEAR_DELETE_MESSAGE,
 	CLEAR_EDIT_MESSAGE,
 	CLEAR_NEW_BUSINESS_MESSAGE
-} from '../../actions/actionTypes';
+} from '../../Actions/actionTypes';
 
 describe('ADD_BUSINESS Reducer', ()=>{
     let business;

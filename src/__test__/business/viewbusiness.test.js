@@ -5,12 +5,12 @@ import {shallow ,mount} from 'enzyme';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
 import {Provider} from "react-redux";
-import {SingleBusiness} from "../../components/business/layout/SingleBusiness";
+import {SingleBusiness} from "../../Components/Business/Layout/SingleBusiness";
 
-import mainReducer from "../../reducers";
+import mainReducer from "../../Reducers";
 
 
-import {Viewbusiness} from '../../components/business/View';
+import {Viewbusiness} from '../../Components/Business/View';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)

@@ -6,8 +6,8 @@ import configureStore from 'redux-mock-store';
 import {Provider} from "react-redux";
 
 
-import mainReducer from "../../reducers";
-import {Newbusiness} from '../../components/business/New';
+import mainReducer from "../../Reducers";
+import {Newbusiness} from '../../Components/Business/New';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)

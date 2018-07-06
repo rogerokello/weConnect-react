@@ -1,14 +1,13 @@
 import React from 'react';
-//import expect from 'expect';
 import {MemoryRouter, NavLink} from 'react-router-dom';
 import {shallow ,mount} from 'enzyme';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
 import {Provider} from "react-redux";
-import mainReducer from "../../reducers";
+import mainReducer from "../../Reducers";
 
 
-import {Newreview} from '../../components/review/New';
+import {Newreview} from '../../Components/Review/New';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)

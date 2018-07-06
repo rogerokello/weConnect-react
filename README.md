@@ -46,13 +46,13 @@ This website brings businesses and individuals together. By using it one will be
         $ npm test -- --coverage
     ```
 
-## How to change point to the API
+## How to point to another API
 
 1. Locate the base URL file in the src folder
 
     ```
         weconnect/src/actions/baseurl.js
     ```
-2. locate the line `"http://127.0.0.1:5000/"` and change it to `"https://dev-v10.herokuapp.com/"`
+2. Locate the line `"https://dev-v10.herokuapp.com/"` and change it to point to another API url.
 
 

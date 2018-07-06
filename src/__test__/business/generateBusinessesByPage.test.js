@@ -5,12 +5,12 @@ import {shallow ,mount} from 'enzyme';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
 import {Provider} from "react-redux";
-import mainReducer from "../../reducers";
+import mainReducer from "../../Reducers";
 import Router from 'react-mock-router';
 
 
-import {Reviewlist} from '../../components/review/List';
-import {generateBusinessesByPage} from '../../helpers/generateBusinessesByPage';
+import {Reviewlist} from '../../Components/Review/List';
+import {generateBusinessesByPage} from '../../Helpers/generateBusinessesByPage';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)

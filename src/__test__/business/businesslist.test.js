@@ -8,12 +8,12 @@ import renderer from 'react-test-renderer';
 import {Provider} from "react-redux";
 import Loader from 'react-loader-spinner';
 
-import Navbar from '../../components/NavigationBar'
-import Pagination from '../../components/Pagination';
-import mainReducer from "../../reducers";
+import Navbar from '../../Components/Layout/Common/NavigationBar'
+import Pagination from '../../Components/Business/Layout/Pagination';
+import mainReducer from "../../Reducers";
 
 
-import {Businesslist} from '../../components/business/List';
+import {Businesslist} from '../../Components/Business/List';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)

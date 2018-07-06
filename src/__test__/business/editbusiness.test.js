@@ -5,11 +5,11 @@ import {shallow ,mount} from 'enzyme';
 import configureStore from 'redux-mock-store';
 import {Provider} from "react-redux";
 
-import {FetchData} from "../../components/loaders/FetchData";
+import {FetchData} from "../../Components/Loaders/FetchData";
 
 
-import mainReducer from "../../reducers";
-import {Editbusiness} from '../../components/business/Edit';
+import mainReducer from "../../Reducers";
+import {Editbusiness} from '../../Components/Business/Edit';
 
 const middlewares = []
 const mockStore = configureStore(mainReducer,middlewares)

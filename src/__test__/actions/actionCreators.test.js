@@ -1,5 +1,5 @@
-import * as actions from "../../actions/actionCreators";
-import * as types from "../../actions/actionTypes";
+ import * as actions from "../../Actions/actionCreators";
+import * as types from "../../Actions/actionTypes";
 import {
     begin, // The action value if a "long" running task begun
     end, // The action value if a "long" running task ended

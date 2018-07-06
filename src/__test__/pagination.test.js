@@ -3,7 +3,7 @@ import {shallow ,mount} from 'enzyme';
 import { expect } from 'chai';
 import {MemoryRouter, NavLink} from 'react-router-dom';
 
-import Pagination from '../components/Pagination';
+import Pagination from '../Components/Business/Layout/Pagination';
 
 
 

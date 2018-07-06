@@ -2,12 +2,12 @@ import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import decode from 'jwt-decode';
 import jwt from "jsonwebtoken";
-import {getBusinesses, getAllBusiness, getOneBusiness} from "../../../actions/businessActions"
+import {getBusinesses, getAllBusiness, getOneBusiness} from "../../../Actions/businessActions"
 import fetchMock from 'fetch-mock';
-import { GET_ALL_BUSINESS } from '../../../actions/actionTypes';
+import { GET_ALL_BUSINESS } from '../../../Actions/actionTypes';
 import mockSessionStorage from '../sessionStorage';
-import {BASE_URL} from "../../../actions/baseurl";
-import {extractAllBusinesses, extractOneBusiness} from "../../../actions/actionCreators"
+import {BASE_URL} from "../../../Actions/baseurl";
+import {extractAllBusinesses, extractOneBusiness} from "../../../Actions/actionCreators"
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

@@ -5,15 +5,15 @@ import jwt from "jsonwebtoken";
 import {
     addReview,
     getAllReviews
-} from "../../../actions/reviewActions";
+} from "../../../Actions/reviewActions";
 import fetchMock from 'fetch-mock';
-import { GET_ALL_BUSINESS } from '../../../actions/actionTypes';
+import { GET_ALL_BUSINESS } from '../../../Actions/actionTypes';
 import mockSessionStorage from '../sessionStorage';
-import {BASE_URL} from "../../../actions/baseurl";
+import {BASE_URL} from "../../../Actions/baseurl";
 import {
     createReview,
     findAllReviews,
-} from "../../../actions/actionCreators"
+} from "../../../Actions/actionCreators"
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

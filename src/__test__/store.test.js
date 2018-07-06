@@ -1,7 +1,7 @@
 import expect from "expect";
 import mainStore from "../store";
 
-import * as types from "../actions/actionTypes";
+import * as types from "../Actions/actionTypes";
 
 describe("Store", () => {
 	it("should handle login", () => {

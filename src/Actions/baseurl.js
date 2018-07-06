@@ -1,0 +1,1 @@
+export const BASE_URL = "https://dev-v10.herokuapp.com/";
