@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/rogerokello/weConnect-react.svg?branch=master)](https://travis-ci.org/rogerokello/weConnect-react)
+[![Build Status](https://travis-ci.org/rogerokello/weConnect-react.svg?branch=master)](https://travis-ci.org/rogerokello/weConnect-react) 
+<a href="https://codeclimate.com/github/rogerokello/weConnect-react/maintainability"><img src="https://api.codeclimate.com/v1/badges/fbae7114b5c44289c779/maintainability" /></a>
+[![Test Coverage](https://api.codeclimate.com/v1/badges/fbae7114b5c44289c779/test_coverage)](https://codeclimate.com/github/rogerokello/weConnect-react/test_coverage)
 
 # weConnect
 This website brings businesses and individuals together. By using it one will be able to create awareness of businesses and give users the ability to write reviews about the businesses that they have interacted with. Please visit a prototype at https://weconnect-react-redux-v6.herokuapp.com/
@@ -43,5 +45,14 @@ This website brings businesses and individuals together. By using it one will be
     ```
         $ npm test -- --coverage
     ```
+
+## How to point to another API
+
+1. Locate the base URL file in the src folder
+
+    ```
+        weconnect/src/actions/baseurl.js
+    ```
+2. Locate the line `"https://dev-v10.herokuapp.com/"` and change it to point to another API url.
 
 

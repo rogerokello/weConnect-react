@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`New business Page should match snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Newbusiness
+    addBusiness={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <withRouter(Connect(Navbar)) />,
+        <Unknown
+          fetchDataLoader={
+                    <Unknown
+                              pendingTask={undefined}
+                              style={
+                                        Object {
+                                                  "left": "0%",
+                                                  "position": "absolute",
+                                                  "top": "50%",
+                                                  "width": "100%",
+                                                }
+                              }
+                    />
+          }
+          form={
+                    <Unknown
+                              currentBusiness={undefined}
+                              id="newbusinessForm"
+                              submitForm={[Function]}
+                    />
+          }
+          header="Register a new business"
+/>,
+        <Unknown />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "fetchDataLoader": <Unknown
+            pendingTask={undefined}
+            style={
+                        Object {
+                                    "left": "0%",
+                                    "position": "absolute",
+                                    "top": "50%",
+                                    "width": "100%",
+                                  }
+            }
+/>,
+          "form": <Unknown
+            currentBusiness={undefined}
+            id="newbusinessForm"
+            submitForm={[Function]}
+/>,
+          "header": "Register a new business",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <withRouter(Connect(Navbar)) />,
+          <Unknown
+            fetchDataLoader={
+                        <Unknown
+                                    pendingTask={undefined}
+                                    style={
+                                                Object {
+                                                            "left": "0%",
+                                                            "position": "absolute",
+                                                            "top": "50%",
+                                                            "width": "100%",
+                                                          }
+                                    }
+                        />
+            }
+            form={
+                        <Unknown
+                                    currentBusiness={undefined}
+                                    id="newbusinessForm"
+                                    submitForm={[Function]}
+                        />
+            }
+            header="Register a new business"
+/>,
+          <Unknown />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "fetchDataLoader": <Unknown
+              pendingTask={undefined}
+              style={
+                            Object {
+                                          "left": "0%",
+                                          "position": "absolute",
+                                          "top": "50%",
+                                          "width": "100%",
+                                        }
+              }
+/>,
+            "form": <Unknown
+              currentBusiness={undefined}
+              id="newbusinessForm"
+              submitForm={[Function]}
+/>,
+            "header": "Register a new business",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
