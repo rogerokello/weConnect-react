@@ -15,19 +15,19 @@ return (
             </li>
             <li  className="list-group-item text-left">
                 <div>
-                    <span className="list-group-item-heading"><strong>Rating:</strong></span>
+                    <span className="list-group-item-heading"><strong>Rating: </strong></span>
                     <span className="list-group-item-text">{' '}{column.star_rating}{' '}stars</span>
                 </div>
                 <div>
-                    <span className="list-group-item-heading"><strong>Reviewer:</strong></span>
+                    <span className="list-group-item-heading"><strong>Reviewer: </strong></span>
                     <span className="list-group-item-text">Roger Okello</span>
                 </div>
                 <div>
-                    <span className="list-group-item-heading"><strong>Review summary:</strong></span>
+                    <span className="list-group-item-heading"><strong>Review summary: </strong></span>
                     <span className="list-group-item-text">{' '}{column.review_summary}</span>
                 </div>
                 <div>
-                    <span className="list-group-item-heading"><strong>Review:</strong></span>
+                    <span className="list-group-item-heading"><strong>Review: </strong></span>
                     <span className="list-group-item-text">{' '}{column.review_description}</span>
                 </div>
             </li>

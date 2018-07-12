@@ -18,7 +18,8 @@ import {
     extractAllBusinesses,
     extractOneBusiness,
     removeBusiness,
-    createBusiness
+    createBusiness,
+    startDataFetch,
 } from "../../../Actions/actionCreators"
 
 const middlewares = [thunk];
@@ -54,9 +55,10 @@ describe("Add Business through API", () => {
         { body: {businessDataMock}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
                                       'Content-Type': 'application/json' }})
         const expectedActions = [
-            createBusiness(businessDataMock)
+          startDataFetch(),
         ];
-        return store.dispatch(addBusiness(businessDataMock));
-        expect(calledActions).toEqual(expectedActions);
+        
+        store.dispatch(addBusiness(businessDataMock));
+        expect(store.getActions()).toEqual(expectedActions);
     })
 })

@@ -141,7 +141,7 @@ export class Newreview extends Component {
                                     <li  className="list-group-item text-left">
                                         <div>
                                             <span className="list-group-item-heading">
-                                                <strong>Name:</strong>
+                                                <strong>Name: </strong>
                                             </span>
                                             <span className="list-group-item-text">
                                                 {' '}{this.props.currentBusiness.name}
@@ -149,7 +149,7 @@ export class Newreview extends Component {
                                         </div>
                                         <div>
                                             <span className="list-group-item-heading">
-                                                <strong>Location:</strong>
+                                                <strong>Location: </strong>
                                             </span>
                                             <span className="list-group-item-text">
                                                 {' '}{this.props.currentBusiness.location}
@@ -157,7 +157,7 @@ export class Newreview extends Component {
                                         </div>
                                         <div>
                                             <span className="list-group-item-heading">
-                                                <strong>Category:</strong>
+                                                <strong>Category: </strong>
                                             </span>
                                             <span className="list-group-item-text">
                                                 {' '}{this.props.currentBusiness.category}
@@ -184,13 +184,13 @@ export class Newreview extends Component {
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label className="control-label col-sm-4" htmlFor="reviewsummary">Review Summary:</label>
+                                <label className="control-label col-sm-4" htmlFor="reviewsummary">Review Summary: </label>
                                 <div className="col-sm-8">
                                 <input className="form-control" name="reviewsummary" placeholder="Review Summary" id="reviewsummary" maxLength="50" size="50"/>
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label className="control-label col-sm-4" htmlFor="review">Your review:</label>
+                                <label className="control-label col-sm-4" htmlFor="review">Your review: </label>
                                 <div className="col-sm-8">
                                 <textarea name="reviewdetails" className="form-control" rows="5" id="review"></textarea>
                                 </div>

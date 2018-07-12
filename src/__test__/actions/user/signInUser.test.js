@@ -16,6 +16,8 @@ import {
     logOutUser,
     signUpUser,
     loginUser,
+    startDataFetch,
+	  stopDataFetch,
     resetPassword
 } from "../../../Actions/actionCreators"
 
@@ -52,10 +54,11 @@ describe("Signin User actions", () => {
         { body: {user:"one"}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
                                       'Content-Type': 'application/json' }})
         const expectedActions = [
-            loginUser(businessDataMock)
+            startDataFetch()
         ];
-        return store.dispatch(signIn({user:"one"}));
-        expect(calledActions).toEqual(expectedActions);
+
+        store.dispatch(signIn({user:"one1"}));
+        expect(store.getActions()).toEqual(expectedActions);
     })
 
 })

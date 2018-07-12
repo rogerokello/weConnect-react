@@ -16,6 +16,8 @@ import {
     logOutUser,
     signUpUser,
     loginUser,
+    startDataFetch,
+	  stopDataFetch,
     resetPassword
 } from "../../../Actions/actionCreators"
 
@@ -51,11 +53,13 @@ describe("Reset password actions", () => {
         fetchMock.postOnce(`${BASE_URL}auth/reset-password`,
         { body: {user:"one"}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
                                       'Content-Type': 'application/json' }})
-        const expectedActions = [
-            resetPassword(businessDataMock)
+        const expectedActions = [        
+            startDataFetch()
         ];
-        return store.dispatch(resetYourPassword({user:"one"}));
-        expect(calledActions).toEqual(expectedActions);
+
+        store.dispatch(resetYourPassword({user:"one"}));
+        
+        expect(store.getActions()).toEqual(expectedActions);
     })
 
 })

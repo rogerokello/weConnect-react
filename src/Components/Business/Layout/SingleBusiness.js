@@ -18,7 +18,7 @@ export const SingleBusiness = ({name, location, category}) => {
                             <li  className="list-group-item text-left">
                                 <div>
                                     <span className="list-group-item-heading">
-                                        <strong>Name:</strong>
+                                        <strong>Name: </strong>
                                     </span>
                                     <span className="list-group-item-text">
                                         {name}
@@ -26,7 +26,7 @@ export const SingleBusiness = ({name, location, category}) => {
                                 </div>
                                 <div>
                                     <span className="list-group-item-heading">
-                                        <strong>Location:</strong>
+                                        <strong>Location: </strong>
                                     </span>
                                     <span className="list-group-item-text">
                                         {location}
@@ -34,7 +34,7 @@ export const SingleBusiness = ({name, location, category}) => {
                                 </div>
                                 <div>
                                     <span className="list-group-item-heading">
-                                        <strong>Category:</strong>
+                                        <strong>Category: </strong>
                                     </span>
                                     <span className="list-group-item-text">
                                         {category}

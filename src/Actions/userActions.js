@@ -23,7 +23,7 @@ export const signUp = (signUpInfo) =>dispatch => {
 				"content-type":"application/json"
 			}
 		};
-
+    dispatch(startDataFetch());
 		fetch(BASE_URL+"auth/register",options)
 			.then (result => {
 				return result.json();
@@ -31,7 +31,7 @@ export const signUp = (signUpInfo) =>dispatch => {
 			.then (data => {
 				dispatch(signUpUser(data))
 			});
-    
+    dispatch(stopDataFetch())
 	}
 };
 
@@ -52,8 +52,10 @@ export const signIn = (signInInfo) => dispatch => {
 			})
 			.then (data => {
 				dispatch(stopDataFetch())
-				dispatch(loginUser(data))
-			});
+        dispatch(loginUser(data))
+			}).catch((ex) => {
+        console.log("e");
+      });
     
 	}
 };
@@ -92,12 +94,17 @@ export const logOut = () => dispatch => {
 			"Authorization": "Bearer " + localStorage.getItem("access_token")
 		}
 	};
-
+  dispatch(startDataFetch());
 	fetch(BASE_URL+"auth/logout",options)
 		.then (result => {
 			return result.json();
 		})
 		.then (data => {
-			dispatch(logOutUser(data))
-		});
+      
+      dispatch(logOutUser(data))
+      
+		}).catch((ex) => {
+      console.log("e");
+    });
+    dispatch(stopDataFetch())
 };
