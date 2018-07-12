@@ -13,6 +13,9 @@ import {BASE_URL} from "../../../Actions/baseurl";
 import {
     createReview,
     findAllReviews,
+    startDataFetch,
+	  stopDataFetch,
+	  clearReviewList,
 } from "../../../Actions/actionCreators"
 
 const middlewares = [thunk];
@@ -48,10 +51,12 @@ describe("Review business actions", () => {
         { body: {}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
                                       'Content-Type': 'application/json' }})
         const expectedActions = [
-            findAllReviews(businessDataMock)
+            clearReviewList(),
+            startDataFetch()
         ];
-        return store.dispatch(getAllReviews(1));
-        expect(calledActions).toEqual(expectedActions);
+
+        store.dispatch(getAllReviews(1));
+        expect(store.getActions()).toEqual(expectedActions);
     })
 
     it('creates reviews action after successfully making a review', () => {
@@ -61,10 +66,12 @@ describe("Review business actions", () => {
         { body: {reviewInfo:"one"}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
                                       'Content-Type': 'application/json' }})
         const expectedActions = [
-            createReview(businessDataMock)
+            startDataFetch()
         ];
-        return store.dispatch(addReview({reviewInfo:"one"},1));
-        expect(calledActions).toEqual(expectedActions);
+
+        store.dispatch(addReview({reviewInfo:"one"},1));
+
+        expect(store.getActions()).toEqual(expectedActions);
     })
 
 })

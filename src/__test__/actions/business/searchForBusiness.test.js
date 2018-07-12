@@ -15,7 +15,8 @@ import {BASE_URL} from "../../../Actions/baseurl";
 import {
     extractAllBusinesses,
     extractOneBusiness,
-    searchForBusinesses
+    searchForBusinesses,
+    startDataFetch,
 } from "../../../Actions/actionCreators"
 
 const middlewares = [thunk];
@@ -51,10 +52,11 @@ describe("Search for businesses actions", () => {
         { body: {}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
                                       'Content-Type': 'application/json' }})
         const expectedActions = [
-            searchForBusiness(businessDataMock)
+            startDataFetch()
         ];
-        return store.dispatch(searchForBusiness("abc"));
-        expect(calledActions).toEqual(expectedActions);
+        
+        store.dispatch(searchForBusiness("abc"));
+        expect(store.getActions()).toEqual(expectedActions);
     })
 
 })

@@ -7,7 +7,11 @@ import fetchMock from 'fetch-mock';
 import { GET_ALL_BUSINESS } from '../../../Actions/actionTypes';
 import mockSessionStorage from '../sessionStorage';
 import {BASE_URL} from "../../../Actions/baseurl";
-import {extractAllBusinesses, extractOneBusiness} from "../../../Actions/actionCreators"
+import {
+  extractAllBusinesses,
+  extractOneBusiness,
+  startDataFetch,
+} from "../../../Actions/actionCreators"
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -42,10 +46,11 @@ describe("get all businesses actions", () => {
         { body: {}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
                                       'Content-Type': 'application/json' }})
         const expectedActions = [
-            extractAllBusinesses(businessDataMock)
+            startDataFetch(),
         ];
-        return store.dispatch(getAllBusiness());
-        expect(calledActions).toEqual(expectedActions);
+
+        store.dispatch(getAllBusiness());
+        expect(store.getActions()).toEqual(expectedActions);
     })
 
     it('creates right action after successfully getting one business', () => {
@@ -55,10 +60,11 @@ describe("get all businesses actions", () => {
         { body: {}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
                                       'Content-Type': 'application/json' }})
         const expectedActions = [
-            extractOneBusiness(businessDataMock)
+          startDataFetch(),
         ];
-        return store.dispatch(getOneBusiness(1));
-        expect(calledActions).toEqual(expectedActions);
+        
+        store.dispatch(getOneBusiness(1));
+        expect(store.getActions()).toEqual(expectedActions);
     })
 
 })
