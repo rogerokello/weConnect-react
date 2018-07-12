@@ -58,7 +58,7 @@ describe("Signin User actions", () => {
         ];
 
         store.dispatch(signIn({user:"one1"}));
-        expect(calledActions).toEqual(expectedActions);
+        expect(store.getActions()).toEqual(expectedActions);
     })
 
 })

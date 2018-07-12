@@ -16,7 +16,8 @@ import {BASE_URL} from "../../../Actions/baseurl";
 import {
     extractAllBusinesses,
     extractOneBusiness,
-    removeBusiness
+    removeBusiness,
+    startDataFetch,
 } from "../../../Actions/actionCreators"
 
 const middlewares = [thunk];
@@ -52,10 +53,11 @@ describe("Delete Business actions", () => {
         { body: {}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
                                       'Content-Type': 'application/json' }})
         const expectedActions = [
-            removeBusiness(businessDataMock, 1)
+            startDataFetch(),
         ];
-        return store.dispatch(deleteBusiness(1));
-        expect(calledActions).toEqual(expectedActions);
+        
+        store.dispatch(deleteBusiness(1));
+        expect(store.getActions()).toEqual(expectedActions);
     })
 
 })
