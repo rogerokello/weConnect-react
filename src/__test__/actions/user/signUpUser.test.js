@@ -16,17 +16,22 @@ import {
     logOutUser,
     signUpUser,
     loginUser,
+    startDataFetch,
+	  stopDataFetch,
     resetPassword
 } from "../../../Actions/actionCreators"
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const store = mockStore({ data: {} });
-const businessDataMock = { business_name: "MTN Uganda", business_profile: "Telecomm company in Uganda", 
-                       location: "Kampala", category: "Telecommunications"};
-const loginData = { user_email: "sonia@yahoo.com", user_password: "1234567890" };
-const loginUserMock = { token: jwt.sign({ user_email: "sonia@yahoo.com", user_password: "1234567890" }, "Oxa34KLncvfjKEjXkf") 
-                        };
+const businessDataMock = { 
+  name: "XEDROX",
+  category: "IT", 
+  location: "LIRA"
+};
+const loginData = { user_email: "roger@gmail.com", user_password: "1234567890" };
+const loginUserMock = { token: jwt.sign({ user_email: "roger@gmail.com", user_password: "1234567890" }, "Oxa34KLncvfjKEjXkf") 
+  };
 
 describe("Sign up user actions", () => {
     let calledActions;
@@ -49,10 +54,12 @@ describe("Sign up user actions", () => {
         { body: {}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
                                       'Content-Type': 'application/json' }})
         const expectedActions = [
-            signUpUser(businessDataMock)
+            startDataFetch(),
+            stopDataFetch(),
         ];
-        return store.dispatch(signUp({user:"one"}));
-        expect(calledActions).toEqual(expectedActions);
+        
+        store.dispatch(signUp({user:"one"}));
+        expect(store.getActions()).toEqual(expectedActions);
     })
 
 })
