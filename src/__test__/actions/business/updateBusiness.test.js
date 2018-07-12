@@ -20,7 +20,8 @@ import {
     extractOneBusiness,
     removeBusiness,
     createBusiness,
-    updateBusiness
+    updateBusiness,
+    startDataFetch
 } from "../../../Actions/actionCreators"
 
 const middlewares = [thunk];
@@ -53,9 +54,10 @@ describe("Update business actions", () => {
         { body: {businessDataMock}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
                                       'Content-Type': 'application/json' }})
         const expectedActions = [
-            updateBusiness(businessDataMock)
+            startDataFetch()
         ];
-        return store.dispatch(editBusiness(businessDataMock, 1));
-        expect(calledActions).toEqual(expectedActions);
+        
+        store.dispatch(editBusiness(businessDataMock, 1));
+        expect(store.getActions()).toEqual(expectedActions);
     })
 })

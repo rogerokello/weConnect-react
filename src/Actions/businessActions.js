@@ -94,7 +94,7 @@ export const getAllBusiness = (nextorprev="") => dispatch => {
 		url = BASE_URL+"businesses?pageNo="+nextorprev
 		options = {
 			method:"GET",
-			url:BASE_URL+"businesses?pageNo="+nextorprev,
+			//url:BASE_URL+"businesses?pageNo="+nextorprev, # axios settings
 			headers:{
 				"content-type":"application/json",
 				"Authorization": "Bearer " + localStorage.getItem("access_token")
@@ -104,7 +104,7 @@ export const getAllBusiness = (nextorprev="") => dispatch => {
 		url = BASE_URL+"businesses";
 		options = {
 			method:"GET",
-			url:BASE_URL+"businesses",
+			//url:BASE_URL+"businesses", # axios settings
 			headers:{
 				"content-type":"application/json",
 				"Authorization": "Bearer " + localStorage.getItem("access_token")
@@ -112,12 +112,12 @@ export const getAllBusiness = (nextorprev="") => dispatch => {
 		};
 	}
 	dispatch(startDataFetch());
-	axios(url,options)
+	fetch(url,options)
 		.then (response => {	
-			return response.data;
+      //return response.data; # axios settings
+      return response.json();
 		})
 		.then(data => {
-			console.log(data)
 			dispatch(stopDataFetch());
 			dispatch(extractAllBusinesses(data))
 			
@@ -137,10 +137,7 @@ export const getOneBusiness = (id) => dispatch => {
 			"Authorization": "Bearer " + localStorage.getItem("access_token")
 		}
 	};
-	dispatch({
-		type: types.LOADING_BUSINESSES,
-		payload: true
-	});
+
 	dispatch(startDataFetch());
 	fetch(BASE_URL+"businesses/"+id,options)
 		.then (response => {
@@ -156,7 +153,6 @@ export const getOneBusiness = (id) => dispatch => {
 			console.log(error);
 		})
 		.then(data => {
-			dispatch(loadBusinesses())
 			dispatch(stopDataFetch());
 			dispatch(extractOneBusiness(data))
 		}).catch(

@@ -16,12 +16,19 @@ import {
     logOutUser,
     signUpUser,
     loginUser,
+    startDataFetch,
+	  stopDataFetch,
     resetPassword
 } from "../../../Actions/actionCreators"
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
-const store = mockStore({ data: {} });
+let store = mockStore({ user: {
+	signUpMessage:{},
+	signInMessage:{},
+	logOutMessage:{},
+	resetPasswordMessage:{}
+} });
 const businessDataMock = { 
     name: "XEDROX",
     category: "IT", 
@@ -49,13 +56,15 @@ describe("Log out user actions", () => {
         
         localStorage.setItem("access_token", loginUserMock.token);
         fetchMock.postOnce(`${BASE_URL}auth/logout`,
-        { body: {user:"one"}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
+        { body: {logOutMessage:"one"}, headers: { 'Authorization': 'Bearer ' + localStorage.getItem("access_token"), 
                                       'Content-Type': 'application/json' }})
         const expectedActions = [
-            logOutUser(businessDataMock)
+          startDataFetch(),
+          stopDataFetch(),
         ];
-        return store.dispatch(logOut());
-        expect(calledActions).toEqual(expectedActions);
+
+        store.dispatch(logOut())
+        expect(store.getActions()).toEqual(expectedActions);
     })
 
 })
