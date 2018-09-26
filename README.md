@@ -3,7 +3,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/fbae7114b5c44289c779/test_coverage)](https://codeclimate.com/github/rogerokello/weConnect-react/test_coverage)
 
 # weConnect
-This website brings businesses and individuals together. By using it one will be able to create awareness of businesses and give users the ability to write reviews about the businesses that they have interacted with. Please visit a prototype at https://weconnect-react-redux-v6.herokuapp.com/
+This website brings businesses and individuals together. By using it one will be able to create awareness of businesses and give users the ability to write reviews about the businesses that they have interacted with. Please visit a prototype at https://we-connect-redux-v7.herokuapp.com/
 
 ## How to run the application
 1. Create a folder weconnect on your computer
