@@ -11,7 +11,7 @@ This website brings businesses and individuals together. By using it one will be
 2. Clone the app to your folder by issuing this command
 
     ```
-        $ git clone -b master https://github.com/rogerokello/weConnect-react.git
+        $ git clone -b finalbranch https://github.com/rogerokello/weConnect-react.git
     ```
     NB: Read these resources to install git: https://git-scm.com/downloads
 3. Navigate into cloned folder
