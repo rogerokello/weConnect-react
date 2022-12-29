@@ -23,7 +23,7 @@
     "react-redux-loading-bar": "^4.0.5",
     "react-redux-spinner": "^1.1.3",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
+    "react-scripts": "5.0.1",
     "react-spinners": "^0.3.2",
     "react-test-renderer": "^16.4.1",
     "redux": "^4.0.0",
